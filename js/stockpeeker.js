@@ -42,7 +42,7 @@ $(document).ready(function() {
                             _.bindAll(this, 'startLongPolling', 'stopLongPolling', 'executeLongPolling', 'onFetch', 'changeUrl');
                         },
                         startLongPolling : function(intervalSeconds){
-                            this.longPolling = false;
+                            this.longPolling = true;
                             if( intervalSeconds ){
                                 this.intervalSeconds = intervalSeconds;
                             }
