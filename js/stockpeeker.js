@@ -40,6 +40,8 @@ $(document).ready(function() {
                         intervalSeconds : 1,
                         initialize : function(){
                             _.bindAll(this, 'startLongPolling', 'stopLongPolling', 'executeLongPolling', 'onFetch', 'changeUrl');
+                            this.noQuote = false;
+                            this.wrongQuote = false;
                         },
                         startLongPolling : function(intervalSeconds){
                             this.longPolling = true;
@@ -69,7 +71,7 @@ $(document).ready(function() {
                         onFetch : function (data) {
                             this.set(data);
                             this.trigger("dataRefreshed");
-                            if( this.longPolling ){
+                            if( this.longPolling && !this.emptyQuote && !this.wrongQuote){
                                 setTimeout(this.executeLongPolling, 1000 * this.intervalSeconds);
                             }
                         }
@@ -84,7 +86,7 @@ $(document).ready(function() {
                             this.stock.on('change', self.render);
                             this.stock.on("dataRefreshed", function() {
                                 self.render();
-                                console.log("refreshed and rendered");
+                                console.log("view refreshed");
                             })
 
                             var submitSearch = function(quote) {
@@ -111,6 +113,7 @@ $(document).ready(function() {
                             var results = this.stock.get("query").results;
                             if (!results) {
                                 console.error("blank query");
+                                this.stock.emptyQuote = true;
                             }
                             else {
                                 var invalidSymbol = results.quote.ErrorIndicationreturnedforsymbolchangedinvalid;
@@ -119,9 +122,12 @@ $(document).ready(function() {
                                     var html = _.template( containerTemplate.html(), quoteData);
                                     el.empty().html(html);
                                     this._addColor(quoteData);
+                                    this.stock.emptyQuote = false;
+                                    this.stock.wrongQuote = false;
                                 }
                                 else if (invalidSymbol) {
                                     console.error("wrong ticker");
+                                    this.stock.wrongQuote = true;
                                     $(".wrong-ticker-alert").show();
                                     setTimeout(function() {
                                         $(".wrong-ticker-alert").hide();
