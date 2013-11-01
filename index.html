@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Stock Peeker</title>
+    <link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/master.css">
+
+    <script type="text/javascript" src="bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="bower_components/underscore/underscore-min.js"></script>
+    <script type="text/javascript" src="bower_components/backbone/backbone.js"></script>
+    <script type="text/javascript" src="js/numeral.min.js"></script>
+    <script type="text/javascript" src="js/stockpeeker.js"></script>
+    <script type="text/template" id="container-template">
+    <div class="row">
+        <div class='col-md-11 company-header'>
+                <span class='company-name'><%= Name %></span>
+                <span class='ticker'>(<%= Symbol %>)</span>
+        </div>
+    </div>
+    <div class="row price-panel">
+        <p class='col-md-11 upper-limit'></p>
+        <div class='col-md-3 price-tag'>
+            <span class='price-info'><%= LastTradePriceOnly %></span>
+            <span class='small-label'>Real-time price in USD</span>
+        </div>
+        <div class='col-md-4 price-tag today-price-change'>
+            <div>
+                <span class='day-price-change-arrow price-change-arrow'></span>
+                <span class='price-info price-change'><%= Change %> (<%= PercentChange %>)</span>
+                <span class='small-label'>Today’s Price Change (% Change)</span>
+            </div>
+        </div>
+        <div class='col-md-5 price-tag one-year-price-change'>
+            <span class='year-price-change-arrow price-change-arrow glyphicon'></span>
+            <span class='price-info price-change'><%= ChangeFromTwoHundreddayMovingAverage %> (<%= PercentChangeFromTwoHundreddayMovingAverage %>)</span>
+            <span class='small-label'>1 Year Change (% Change)</span>
+        </div>
+    </div>
+    <div class="row">
+        <p class='col-md-11 lower-limit'></p>
+        <div class="row"><div class='col-md-12' style='height:30px'></div></div>
+        <div class="row">
+            <div class='col-md-5 price-details price-details-1'>
+                <table class='table-striped details-col'>
+                    <col width='400'></col>
+                    <col width='170'></col>
+                    <tr><td class='col-label'>Open:</td><td class='col-price'><div class='embeded-price' align='right'><%= Open %></div></td></tr>
+                    <tr><td class='col-label'>Day High:</td><td class='col-price'><div class='embeded-price' align='right'><%= DaysHigh %></div></td></tr>
+                    <tr><td class='col-label'>Day Low:</td><td class='col-price'><div class='embeded-price' align='right'><%= DaysLow %></div></td></tr>
+                    <tr><td class='col-label'>Bid:</td><td class='col-price'><div class='embeded-price' align='right'><%= Bid %></div></td></tr>
+                    <tr><td class='col-label'>Ask:</td><td class='col-price'><div class='embeded-price' align='right'><%= Ask %></div></td></tr>
+                </table>
+            </div>
+            <div class='col-md-5 col-md-offset-1 price-details price-details-2'>
+                <table class='table-striped details-col second-col'>
+                    <col width='400'></col>
+                    <col width='170'></col>
+                    <tr><td class='col-label'>P/E:</td><td class='col-price'><div class='embeded-price' align='right'><%= PERatio %></div></td></tr>
+                    <tr><td class='col-label'>Market Cap (B):</td><td class='col-price'><div class='embeded-price' align='right'><%= MarketCapitalization %></div></td></tr>
+                    <tr><td class='col-label'>Earnings Per Share:</td><td class='col-price'><div class='embeded-price' align='right'><%= EPSEstimateCurrentYear %></div></td></tr>
+                    <tr><td class='col-label'>Divdend Per Share:</td><td class='col-price'><div class='embeded-price' align='right'><%= DividendYield %></div></td></tr>
+                    <tr><td class='col-label'>Volume:</td><td class='col-price'><div class='embeded-price' align='right'><%= Volume %></div></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    </script>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="top">
+        <div class="row">
+            <div class="col-md-2 col-md-5 alert alert-warning wrong-ticker-alert" style="display:none">You have input an wrong ticker</div>
+        </div>
+        <div class="top-blank"></div>
+        <div class="row header">
+            <div class="title">
+                <span class="header-title">MARKET DATA</span>
+            </div>
+            <div class="search-bar">
+                <input type="text" class="search" />
+                <button class="search-icon">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="row">
+            <div class="col-md-12 container"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-12" style='height: 200px'></div>
+        </div>
+    </div>
+    <div class="row footer">
+        <div class="col-md-12 footer-content">
+            <ul>
+                <li>@2007-2013 Pellucid Analytics LP</li>
+                <li><a href="#">Terms & Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-md-12" style='height: 20px'></div>
+    </div>
+
+    </div>
+
+</body>
+</html>

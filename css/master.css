@@ -1,0 +1,158 @@
+body {
+    overflow-x: hidden;
+}
+
+.top {
+    width: 100%;
+}
+.top-blank {
+    position: relative;
+    height: 45px;
+}
+
+.header {
+    background: #313533;
+    color: white;
+    width: 100%;
+    display: block;
+    padding-left: 20px;
+}
+
+.header-title {
+    font-size: 2.5em;
+}
+
+.search-bar {
+    padding-top: 15px;
+    padding-right: 50px;
+    float: right;
+}
+
+.search-icon {
+    border-radius: 5px;
+    width: 70px;
+}
+
+.footer {
+    height: 30px;
+    background: #ccc;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li {
+    font-size: 0.8em;
+    color: #333;
+    float: left;
+    margin: 0 20px 0 0;
+}
+
+.footer a {
+    color: #333;
+    text-decoration: underline;
+}
+
+.company-header {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.company-name {
+    font-size: 2.5em;
+}
+
+.ticker {
+    font-size: 1.5em;
+    color: #aaa;
+}
+
+.upper-limit {
+    border-bottom: 3px solid #888a8a;
+    height: 5px;
+}
+
+.lower-limit {
+
+    border-bottom: 3px solid #888a8a;
+    height: 10px;
+}
+
+.price-info {
+    font-size: 2em;
+    display: block;
+    padding-right: 0;
+
+}
+
+.small-label {
+    font-size: 0.8em;
+    color: #6c6c6c;
+}
+
+.price-change-arrow {
+    float: left;
+    font-size: 2.6em;
+}
+
+.today-price-change {
+    border-left: 1px solid #888a8a;
+
+}
+.one-year-price-change {
+    border-left: 1px solid #888a8a;
+
+}
+
+.details-col {
+    table-layout: fixed;
+}
+
+.col-label {
+    color: #6c6c6c;
+}
+
+.col-price {
+    text-align: right;
+    font-weight: bold;
+}
+
+.details-col tr {
+    height: 30px;
+}
+
+.priceUp {
+    color: green;
+}
+.priceDown {
+    color: red;
+}
+.main {
+    padding-left: 25px;
+}
+
+.second-col {
+    table-layout: fixed;
+}
+
+.footer-content {
+    padding-top: 8px;
+}
+
+.price-tag {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+.title {
+    float: left;
+    margin-left: 50px;
+}
+
+.wrong-ticker-alert {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    left: 50%;
+    margin-left: -150px;
+}
